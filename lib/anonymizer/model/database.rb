@@ -36,6 +36,8 @@ class Database
     queries = []
 
     columns.each do |column_name, info|
+      STDERR.puts column_name.inspect
+      STDERR.puts info.inspect
       Object.const_get(
         "Database::#{translate_acton_to_class_name(info['action'])}"
       ).query(table_name, column_name, info).each do |query|
